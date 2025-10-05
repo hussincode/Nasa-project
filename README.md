@@ -19,424 +19,283 @@ Built for [NASA Space Apps Challenge](https://www.spaceappschallenge.org/)
 
 ## 🌌 Overview
 
-This project was developed for the NASA Space Apps Challenge, providing an intuitive web interface that allows data scientists and researchers to upload CSV datasets and receive AI-powered predictions. The application features a stunning cosmic-themed UI that reflects the spirit of space exploration.
+This project was developed for the NASA Space Apps Challenge, providing an intuitive web interface that allows data scientists and researchers to upload CSV datasets and receive AI-powered predictions.  
+The application features a **stunning cosmic-themed UI** that reflects the spirit of space exploration.
 
 ### ✨ Key Features
+- 🎨 **Immersive Space Theme** – Animated cosmic background with stars and nebulas  
+- 📊 **CSV Upload** – Drag-and-drop dataset submission  
+- 🤖 **AI Integration** – Seamless connection to machine-learning models  
+- ⚡ **Real-time Processing** – Progress bar & live updates  
+- 🔄 **Error Handling** – Friendly feedback messages  
+- 📈 **Result Visualization** – Classification reports & confusion matrix  
+- 🌐 **Responsive Design** – Optimized for all screens  
 
-- 🎨 **Immersive Space Theme** - Animated cosmic background with stars, nebulas, and shooting stars
-- 📊 **CSV Data Upload** - Simple drag-and-drop interface for dataset submission
-- 🤖 **AI Integration** - Seamless connection to machine learning prediction models
-- ⚡ **Real-time Processing** - Instant feedback with loading states and progress indicators
-- 🔄 **Error Handling** - Comprehensive validation and user-friendly error messages
-- 📈 **Results Visualization** - Clean display of AI predictions and analysis results
-- 🌐 **Responsive Design** - Works seamlessly across desktop and mobile devices
+---
 
 ## 🎯 Project Purpose
 
-This application serves as a bridge between complex AI models and end-users, making advanced data analysis accessible to data scientists, researchers, and analysts working on space-related datasets. Built specifically for the NASA Space Apps Challenge, it demonstrates how modern web technologies can make AI predictions intuitive and visually engaging.
+This application bridges **complex AI models** and **end-users**, making advanced analysis accessible to scientists and analysts working with space data.  
+Built specifically for the **NASA Space Apps Challenge**, it showcases how web tech + AI can make predictions **intuitive and inspiring**.
 
 **Target Audience:** Data Scientists, Researchers, Space Data Analysts
+
+---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18+** - Modern UI library with hooks
-- **Vanilla CSS** - Custom styling with animations
-- **JavaScript ES6+** - Modern JavaScript features
-- **Fetch API** - HTTP requests to backend
+- ⚛️ React 18+
+- 🎨 Tailwind CSS (animations + styling)
+- 🧩 JavaScript ES6+
+- 🌐 Fetch API  
 
 ### Backend
-- **Node.js** - JavaScript runtime environment
-- **Express.js** - Fast, minimalist web framework
-- **Multer** - Multipart/form-data file upload handling
-- **Axios** - Promise-based HTTP client
-- **Form-Data** - Multipart form data encoding
+- 🟩 Node.js 18+
+- ⚙️ Express.js
+- 📦 Multer (for file uploads)
+- 🌍 Axios + Form-Data  
+- 🔐 HTTPS, CORS enabled
 
-### Integration
-- **AI API** - External machine learning model endpoint
-- **RESTful Architecture** - Clean API design
+### AI Service
+- 🧠 Flask + Python 3
+- 🧬 Pandas, NumPy, scikit-learn, XGBoost, LightGBM, CatBoost
+- 🧱 Ensemble Stacking Model (LogReg meta-model)
+
+---
 
 ## 📋 Prerequisites
+- Node.js ≥ 18  
+- npm ≥ 8  
+- Python ≥ 3.8  
+- pip  
+- Modern web browser  
 
-Before running this project, ensure you have:
-
-- [Node.js](https://nodejs.org/) v18.0 or higher
-- [npm](https://www.npmjs.com/) v8.0 or higher (comes with Node.js)
-- Access to the AI prediction API endpoint
-- A modern web browser (Chrome, Firefox, Safari, Edge)
+---
 
 ## ⚙️ Installation
 
-### 1. Clone the Repository
-
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/hussincode/nasa-project.git
 cd nasa-project
-```
-
-### 2. Backend Setup
-
-```bash
-# Navigate to backend directory
+2️⃣ Backend Setup
+bash
+Copy code
 cd backend
-
-# Install dependencies
 npm install
+Dependencies: express, cors, multer, axios, form-data, https
 
-# Dependencies installed:
-# - express: Web server framework
-# - cors: Cross-origin resource sharing
-# - multer: File upload handling
-# - axios: HTTP client
-# - form-data: Form data handling
-```
+Run backend:
 
-### 3. Frontend Setup
+bash
+Copy code
+node server.js
+Runs at http://localhost:5000
 
-```bash
-# Navigate to frontend directory
-cd ../frontend
+3️⃣ AI Service Setup
+bash
+Copy code
+cd python-ai
+pip install -r requirements.txt
+Example requirements.txt
 
-# Install dependencies
+nginx
+Copy code
+Flask
+flask-cors
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+catboost
+Run Flask API:
+
+bash
+Copy code
+python app.py
+Runs at http://localhost:8000/predict
+
+4️⃣ Frontend Setup
+bash
+Copy code
+cd frontend
 npm install
-
-# Start development server
 npm start
-```
+Frontend runs at http://localhost:3000
 
-## 🔧 Configuration
+🔧 Configuration
+Backend (backend/server.js)
+js
+Copy code
+const AI_API_URL = 'http://127.0.0.1:8000/predict';
+const PORT = 5000;
+Optional .env
 
-### Backend Configuration
-
-Edit `backend/server.js` to configure your AI API endpoint:
-
-```javascript
-// Update this with your AI API URL
-const AI_API_URL = 'https://127.0.0.1:8000/predict';
-
-// For HTTP endpoints, use:
-// const AI_API_URL = 'http://127.0.0.1:8000/predict';
-```
-
-**Port Configuration:**
-The backend runs on port 5000 by default. To change:
-
-```javascript
-const PORT = 5000; // Change to your preferred port
-```
-
-### Frontend Configuration
-
-If you change the backend port, update `frontend/src/SpiralGalaxy.jsx`:
-
-```javascript
-const response = await fetch('http://localhost:5000/upload-csv', {
-  // Change port number if backend port changed
-```
-
-### Environment Variables (Optional)
-
-Create a `.env` file in the backend directory:
-
-```env
+env
+Copy code
 PORT=5000
-AI_API_URL=https://127.0.0.1:8000/predict
+AI_API_URL=http://127.0.0.1:8000/predict
 NODE_ENV=development
-```
+Frontend (frontend/src/SpiralGalaxy.jsx)
+js
+Copy code
+const response = await fetch('http://localhost:5000/upload-csv', { ... });
+🚀 Running the App
+Terminal 1 – AI API
 
-## 🚀 Running the Application
+bash
+Copy code
+cd python-ai
+python app.py
+Terminal 2 – Backend
 
-### Development Mode
-
-**Terminal 1 - Backend Server:**
-```bash
+bash
+Copy code
 cd backend
 node server.js
-```
+Terminal 3 – Frontend
 
-You should see:
-```
-🚀 Express Backend Server Started
-📡 Server: http://localhost:5000
-📤 Upload endpoint: http://localhost:5000/upload-csv
-🔍 Health check: http://localhost:5000/health
-🤖 AI API: https://127.0.0.1:8000/predict
-```
-
-**Terminal 2 - React Frontend:**
-```bash
+bash
+Copy code
 cd frontend
 npm start
-```
+Now open 👉 http://localhost:3000
 
-You should see:
-```
-Compiled successfully!
-
-You can now view the app in the browser.
-  Local: http://localhost:3000
-```
-
-The application will automatically open in your browser at `http://localhost:3000`.
-
-### Production Build
-
-```bash
-cd frontend
-npm run build
-```
-
-This creates an optimized production build in the `build` folder.
-
-## 📁 Project Structure
-
-```
+📁 Project Structure
+css
+Copy code
 nasa-project/
 ├── backend/
-│   ├── server.js              # Express server & API routes
-│   ├── package.json           # Backend dependencies
-│   ├── package-lock.json
-│   └── uploads/               # Temporary file storage (auto-created)
+│   ├── server.js
+│   └── uploads/
 ├── frontend/
-│   ├── src/
-│   │   ├── App.js             # Main React application
-│   │   ├── SpiralGalaxy.jsx   # Main component with UI
-│   │   ├── index.js           # React entry point
-│   │   └── index.css          # Global styles
-│   ├── public/
-│   │   ├── index.html
-│   │   └── favicon.ico
-│   ├── package.json           # Frontend dependencies
-│   └── package-lock.json
-├── README.md                  # This file
-└── LICENSE                    # MIT License
-```
-
-## 🔌 API Documentation
-
-### Backend Endpoints
-
-#### Health Check
-```http
+│   └── src/
+│       └── SpiralGalaxy.jsx
+└── python-ai/
+    ├── app.py
+    ├── train_model.py
+    ├── stacking_model.pkl
+    ├── label_encoder.pkl
+    └── feature_names.pkl
+🔌 API Endpoints
+Health Check
+bash
+Copy code
 GET /health
-```
-
-**Response:**
-```json
+json
+Copy code
 {
   "status": "healthy",
   "service": "Express Backend",
   "port": 5000,
-  "aiApiUrl": "https://127.0.0.1:8000/predict"
+  "aiApiUrl": "http://127.0.0.1:8000/predict"
 }
-```
-
-#### Upload CSV File
-```http
+Upload CSV
+bash
+Copy code
 POST /upload-csv
-```
+Body: multipart/form-data (file field)
 
-**Request:**
-- **Method:** POST
-- **Content-Type:** multipart/form-data
-- **Body:** File field named `file` with CSV data
+Success:
 
-**Success Response (200 OK):**
-```json
+json
+Copy code
 {
   "success": true,
-  "data": {
-    // AI model response data
-  },
+  "data": { "classification_report": {}, "confusion_matrix": [] },
   "filename": "dataset.csv"
 }
-```
+📊 Usage Guide
+Visit http://localhost:3000
 
-**Error Response (400/500):**
-```json
-{
-  "error": "Error message",
-  "details": "Detailed error information"
-}
-```
+Upload or drag a .csv file
 
-## 📊 Usage Guide
+Wait for AI analysis progress bar
 
-### Step 1: Prepare Your CSV File
-Ensure your CSV file contains the required columns for the AI model.
+View animated report with accuracy, F1, confusion matrix
 
-### Step 2: Upload the File
-1. Open the application at `http://localhost:3000`
-2. Click the upload area or drag and drop your CSV file
-3. The file will be validated (must be .csv format)
+Click “New Analysis” to restart
 
-### Step 3: Processing
-- The file is uploaded to the Express backend
-- Backend forwards it to the AI prediction API
-- You'll see a loading indicator during processing
+🎨 UI Highlights
+100+ twinkling stars (CSS animations)
 
-### Step 4: View Results
-- AI predictions are displayed in a clean, formatted view
-- Results can be copied or downloaded for further analysis
+Glass-morphism upload card
 
-## 🎨 UI Components
+Gradient progress bars
 
-### Cosmic Background
-- **100+ animated stars** with twinkling effects at various speeds
-- **5 colorful nebula clouds** with smooth floating animations
-- **Shooting stars** that traverse the screen periodically
-- Fully responsive design adapting to all screen sizes
+Animated accuracy meter
 
-### Upload Interface
-- **Glass-morphism design** with frosted glass effect
-- **File validation** ensuring only CSV files are accepted
-- **Loading states** with progress feedback
-- **Error handling** with clear, actionable messages
-- **Success confirmation** with file details and predictions
+Scrollable results section for long reports
 
-## 🐛 Troubleshooting
+🧠 Model Info
+Stacking ensemble combining:
 
-### Common Issues
+XGBoost
 
-#### Backend won't start - "Port 5000 already in use"
+CatBoost
 
-**Windows:**
-```bash
-netstat -ano | findstr :5000
-taskkill /PID <PID> /F
-```
+LightGBM
 
-**Linux/Mac:**
-```bash
-lsof -ti:5000 | xargs kill -9
-```
+Logistic Regression (meta-model)
 
-#### "Cannot connect to AI API"
-- Verify the AI API is running and accessible
-- Check the `AI_API_URL` in `server.js`
-- Ensure firewall isn't blocking the connection
-- For HTTPS with self-signed certificates, the code includes `rejectUnauthorized: false`
+Outputs classification report, confusion matrix, accuracy, macro avg, weighted avg.
 
-#### CORS Errors in Browser Console
-- Ensure `cors` package is installed: `npm install cors`
-- Verify `app.use(cors())` is present in `server.js`
-- Check backend is running before starting frontend
+🐛 Troubleshooting
+Issue	Cause	Fix
+“Cannot connect to AI API”	Flask not running	python app.py
+“Failed to fetch”	Wrong port or CORS	Update fetch URL, ensure CORS
+Upload fails	Wrong file type	Use .csv ≤ 10 MB
+Port 5000 in use	Already occupied	netstat / change PORT
+CORS errors	Missing middleware	app.use(cors())
 
-#### "Failed to fetch" in Frontend
-- Confirm backend server is running on port 5000
-- Check the fetch URL in `SpiralGalaxy.jsx` matches backend port
-- Open `http://localhost:5000/health` to test backend directly
+🔒 Production Notes
+✅ Enable strict CORS
 
-#### File Upload Fails
-- Verify file is actually a CSV (not Excel or other format)
-- Check file size isn't too large
-- Ensure `uploads/` directory has write permissions
+✅ Remove rejectUnauthorized:false
 
-## 🔒 Security Considerations
+✅ Use environment variables
 
-### For Production Deployment
+✅ Limit file size
 
-⚠️ **Important:** Remove development-only settings:
+✅ Add rate-limiting (express-rate-limit)
 
-1. **SSL Certificate Validation**
-   ```javascript
-   // Remove this in production:
-   rejectUnauthorized: false
-   ```
+🗺️ Roadmap
+ Data visualization charts
 
-2. **CORS Configuration**
-   ```javascript
-   // Update to specific domain:
-   app.use(cors({
-     origin: 'https://yourdomain.com'
-   }));
-   ```
+ Export to PDF
 
-3. **Environment Variables**
-   - Use `.env` files for sensitive data
-   - Never commit API keys or secrets to Git
+ User login & history
 
-4. **File Upload Security**
-   - Implement file size limits
-   - Add virus scanning for uploaded files
-   - Validate file content, not just extension
+ Multi-file batch uploads
 
-5. **Rate Limiting**
-   ```bash
-   npm install express-rate-limit
-   ```
+🤝 Contributing
+Fork → branch → commit → PR
 
-## 🗺️ Roadmap
+Follow existing style
 
-- [ ] Add data visualization charts
-- [ ] Support multiple file formats (Excel, JSON)
-- [ ] Implement user authentication
-- [ ] Add prediction history
-- [ ] Export results to PDF
-- [ ] Batch file processing
-- [ ] Real-time prediction updates
+Test before submitting
 
-## 🤝 Contributing
+📜 License
+MIT License – see LICENSE
 
-Contributions are welcome! This project was built for NASA Space Apps Challenge, but improvements are always appreciated.
+👨‍💻 Author
+Hussin Hesham
 
-### How to Contribute
+🌐 GitHub @hussincode
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+💼 LinkedIn
 
-### Contribution Guidelines
+✉️ heshamhussin172@gmail.com
 
-- Write clear, descriptive commit messages
-- Follow existing code style and conventions
-- Test your changes thoroughly
-- Update documentation as needed
-- Add comments for complex logic
+🙏 Acknowledgments
+NASA Space Apps Challenge – inspiration
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Author
-
-**Hussin Hesham**
-
-- GitHub: [@hussincode](https://github.com/hussincode)
-- LinkedIn: [Hussin Hesham](https://www.linkedin.com/in/hussinhesham/)
-- Email: heshamhussin172@gmail.com
-
-## 🙏 Acknowledgments
-
-- **NASA Space Apps Challenge** - For inspiring this project
-- **React Community** - For excellent documentation and support
-- **Express.js Team** - For the robust backend framework
-- **Space Enthusiasts** - For the cosmic design inspiration
-
-## 📞 Support
-
-For questions, issues, or suggestions:
-
-- 📧 Email: heshamhussin172@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/hussincode/nasa-project/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/hussincode/nasa-project/discussions)
-
-## 🌟 Show Your Support
-
-If you found this project helpful, please consider:
-- ⭐ Starring the repository
-- 🐛 Reporting bugs
-- 💡 Suggesting new features
-- 🤝 Contributing to the code
-
----
+React Community, Express Team, Space enthusiasts
 
 <div align="center">
+Built with ❤️ for NASA Space Apps Challenge 2025
+Making AI predictions accessible through beautiful, intuitive interfaces.
 
-**Built with ❤️ for NASA Space Apps Challenge**
-
-*Making AI predictions accessible through beautiful, intuitive interfaces*
-
-</div>
+</div> ```
